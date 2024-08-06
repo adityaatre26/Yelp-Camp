@@ -1,0 +1,94 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="row">
+  <h1 class="text-center mb-3">Edit Campground</h1>
+  <div class="col-6 offset-3">
+    <form
+      action="/campgrounds/<%= campground._id %>?_method=PUT"
+      method="post"
+      novalidate
+      class="toValidate"
+    >
+      <div class="mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Title"
+          name="campground[title]"
+          value="<%= campground.title  %>"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Location"
+          name="campground[location]"
+          value="<%= campground.location %>"
+          required
+        />
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="price-label">$</span>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Price"
+          aria-label="price"
+          aria-describedby="price-label"
+          name="campground[price]"
+          value="<%= campground.price  %>"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Image URL"
+          name="campground[image]"
+          value="<%= campground.image  %>"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <textarea
+          type="text"
+          class="form-control"
+          placeholder="Description"
+          name="campground[description]"
+          required
+        >
+ <%= campground.description %></textarea
+        >
+      </div>
+      <button class="btn btn-success offset-5">Edit</button>
+    </form>
+    <a href="/campgrounds">Back</a>
+  </div>
+</div>
+<script>
+  (function () {
+    "use strict";
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll(".toValidate");
+
+    // Loop over them and prevent submission
+    Array.from(forms).forEach(function (form) {
+      form.addEventListener(
+        "submit",
+        function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+
+          form.classList.add("was-validated");
+        },
+        false
+      );
+    });
+  })();
+</script>
