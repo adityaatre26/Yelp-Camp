@@ -3,7 +3,13 @@
 <div class="row">
   <h1 class="text-center mb-3">New Campground</h1>
   <div class="col-6 offset-3">
-    <form action="/campgrounds" method="post" novalidate class="toValidate">
+    <form
+      action="/campgrounds"
+      method="post"
+      novalidate
+      class="toValidate"
+      enctype="multipart/form-data"
+    >
       <div class="mb-3">
         <input
           type="text"
@@ -34,7 +40,8 @@
           required
         />
       </div>
-      <div class="mb-3">
+      <input type="file" name="image" id="" multiple />
+      <!-- <div class="mb-3">
         <input
           type="text"
           class="form-control"
@@ -42,7 +49,7 @@
           name="campground[image]"
           required
         />
-      </div>
+      </div> -->
       <div class="mb-3">
         <textarea
           type="text"
