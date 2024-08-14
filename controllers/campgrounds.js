@@ -1,4 +1,6 @@
 const Campground = require("../models/campground");
+const maptilerClient = require("@maptiler/client");
+maptilerClient.config.apiKey = process.env.MAPTILER_API_KEY;
 
 module.exports.indexPage = async (req, res) => {
   const camps = await Campground.find({});
@@ -10,7 +12,13 @@ module.exports.renderNewForm = (req, res) => {
 };
 
 module.exports.saveNewForm = async (req, res, next) => {
+  const geoData = await maptilerClient.geocoding.forward(
+    req.body.campground.location,
+    { limit: 1 }
+  );
+
   const newCamp = new Campground(req.body.campground);
+  newCamp.geometry = geoData.features[0].geometry;
   newCamp.image = await req.files.map((f) => ({
     url: f.path,
     filename: f.filename,

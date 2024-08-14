@@ -1,35 +1,50 @@
 <% layout('layouts/boilerplate') %>
 
-<h1 class="mb-3">Register</h1>
-<hr />
-<form action="/register" method="post" class="toValidate" novalidate>
-  <div class="mb-3">
-    <input
-      type="text"
-      class="form-control"
-      placeholder="Enter Username"
-      required
-      name="username"
-    />
+<div class="container my-4">
+  <div class="row justify-content-center">
+    <div class="col-sm-10 col-md-8 col-lg-6 col-xl-4">
+      <div class="card shadow">
+        <img
+          src="/forTitle.jpg"
+          alt=""
+          class="card-img-top"
+          style="max-height: 200px; object-fit: cover"
+        />
+        <div class="card-body">
+          <h5 class="card-title mb-3">Register</h5>
+          <form action="/register" method="post" class="toValidate" novalidate>
+            <div class="mb-3">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter Username"
+                autofocus
+                required
+                name="username"
+              />
+            </div>
+            <div class="mb-3">
+              <input
+                type="email"
+                class="form-control"
+                placeholder="Enter Email"
+                required
+                name="email"
+              />
+            </div>
+            <div class="mb-3">
+              <input
+                type="password"
+                class="form-control"
+                placeholder="Enter Password"
+                required
+                name="password"
+              />
+            </div>
+            <button class="btn btn-success w-100">Register</button>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="mb-3">
-    <input
-      type="email"
-      class="form-control"
-      placeholder="Enter Email"
-      required
-      name="email"
-    />
-  </div>
-  <div class="mb-3">
-    <input
-      type="password"
-      class="form-control"
-      placeholder="Enter Password"
-      required
-      name="password"
-    />
-  </div>
-  <hr />
-  <button class="btn btn-success">Register</button>
-</form>
+</div>
